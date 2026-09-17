@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👻</text></svg>">
+<title>Gerador de fantasmas</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+<aside>
+ <h1>Gerador de fantasmas</h1>
+ <p class="lede">Cada nome gera um fantasma diferente. Ajuste o que quiser depois.</p>
+
+ <section>
+  <h2>Nome</h2>
+  <div class="namebox">
+   <input id="name" aria-label="Nome do fantasma" autocomplete="off" spellcheck="false">
+   <button class="btn primary" id="shuffle">Sortear</button>
+  </div>
+ </section>
+
+ <section id="sec-forma"><h2>Forma</h2></section>
+ <section id="sec-rosto"><h2>Rosto</h2></section>
+ <section id="sec-halftone"><h2>Halftone</h2></section>
+ <section id="sec-cor"><h2>Cores</h2></section>
+</aside>
+
+<main id="main">
+ <canvas id="stage" aria-label="Pré-visualização do fantasma"></canvas>
+ <div class="tools">
+  <button class="btn" id="dlpng">Baixar PNG</button>
+  <button class="btn" id="dlsvg">Baixar SVG</button>
+ </div>
+ <div class="status" id="status" role="status"></div>
+ <div class="caption" id="caption"></div>
+</main>
+
+<script type="module" src="/src/main.js"></script>
+</body>
+</html>
