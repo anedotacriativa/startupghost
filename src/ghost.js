@@ -58,6 +58,47 @@ export function drawGhost(g,S,t){
  if(state.extra==='antena'){const sw=Math.sin(t*2.2)*.03*u*an,tx=cx+.05*u+sw,ty=top-.11*u;
   g.strokeStyle=RED;g.lineWidth=.014*u;g.beginPath();g.moveTo(cx,top+.01*u);g.quadraticCurveTo(cx-.01*u,top-.06*u,tx,ty);g.stroke();
   g.fillStyle=GREEN;g.beginPath();g.arc(tx,ty,.026*u,0,Math.PI*2);g.fill();}
+
+ // acessórios (um por vez) — sempre ao lado/fora da silhueta, para não sumir sobre o corpo escuro
+ const hx=cx+r*1.32, hy=headCy+h*.44;
+ if(state.accessory==='fone'){
+  g.strokeStyle=RED;g.lineWidth=r*.11;g.lineCap='round';
+  g.beginPath();g.arc(cx,headCy-r*.1,r*1.16,Math.PI*1.1,Math.PI*1.9);g.stroke();
+  g.fillStyle=RED;[-1,1].forEach(s=>{g.beginPath();g.ellipse(cx+s*r*1.07,ey+.015*u,r*.16,r*.24,0,0,Math.PI*2);g.fill();});
+  g.fillStyle=GREEN;[-1,1].forEach(s=>{g.beginPath();g.ellipse(cx+s*r*1.07,ey+.015*u,r*.065,r*.1,0,0,Math.PI*2);g.fill();});
+ } else if(state.accessory==='caneca'){
+  const mx=hx, my=hy, mw=r*.44, mh=r*.38;
+  g.fillStyle=RED;
+  g.beginPath();g.rect(mx-mw*.5,my-mh*.5,mw,mh*.9);g.fill();
+  g.beginPath();g.ellipse(mx,my-mh*.5,mw*.5,mw*.12,0,0,Math.PI*2);g.fill();
+  g.lineWidth=mw*.16;g.strokeStyle=RED;
+  g.beginPath();g.arc(mx+mw*.66,my-mh*.05,mh*.32,-Math.PI*.55,Math.PI*.55);g.stroke();
+  g.strokeStyle=GREEN;g.lineWidth=mw*.1;g.lineCap='round';
+  [-1,0,1].forEach((s,i)=>{const sx0=mx+s*mw*.22,baseY=my-mh*.58;g.beginPath();
+   for(let k=0;k<=5;k++){const yy=baseY-k*mh*.17,xx=sx0+Math.sin(t*2.2+i*1.8+k*.85)*mw*.1*an;k?g.lineTo(xx,yy):g.moveTo(xx,yy);}
+   g.stroke();});
+ } else if(state.accessory==='energetico'){
+  const ax=hx, ay=hy, cw=r*.32, ch=r*.6;
+  g.fillStyle=RED;
+  g.beginPath();g.rect(ax-cw*.5,ay-ch*.5,cw,ch);g.fill();
+  g.beginPath();g.ellipse(ax,ay-ch*.5,cw*.5,cw*.16,0,0,Math.PI*2);g.fill();
+  g.beginPath();g.ellipse(ax,ay+ch*.5,cw*.5,cw*.16,0,0,Math.PI*2);g.fill();
+  g.fillStyle=GREEN;g.fillRect(ax-cw*.5,ay-ch*.1,cw,ch*.2);
+ } else if(state.accessory==='notebook'){
+  const lx=cx+r*1.12, ly=bottom-h*.03, lw=r*.82, lh=r*.44;
+  g.fillStyle=RED;
+  g.beginPath();g.moveTo(lx-lw*.55,ly);g.lineTo(lx+lw*.45,ly);g.lineTo(lx+lw*.32,ly+lh*.22);g.lineTo(lx-lw*.68,ly+lh*.22);g.closePath();g.fill();
+  g.beginPath();g.moveTo(lx-lw*.5,ly);g.lineTo(lx+lw*.4,ly);g.lineTo(lx+lw*.32,ly-lh);g.lineTo(lx-lw*.42,ly-lh);g.closePath();g.fill();
+  // tela: fundo em destaque + logo "iot" bem grosso (traços finos somem no halftone)
+  const gw=lw*.66, gh=lh*.62, gx=lx-.05*lw, gy=ly-lh*.78;
+  g.fillStyle=GREEN;g.fillRect(gx-gw/2,gy-gh/2,gw,gh);
+  g.fillStyle=RED;
+  const gs=gh*.62, sp=gw*.29, x1=gx-sp, x2=gx, x3=gx+sp;
+  g.fillRect(x1-gs*.16,gy-gs*.5,gs*.32,gs);
+  g.beginPath();g.arc(x2,gy,gs*.44,0,Math.PI*2);g.fill();
+  g.fillRect(x3-gs*.44,gy-gs*.5,gs*.88,gs*.24);
+  g.fillRect(x3-gs*.13,gy-gs*.5,gs*.26,gs);
+ }
  g.restore();
 }
 

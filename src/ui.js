@@ -1,4 +1,4 @@
-import {state,EYES,MOUTHS,EXTRAS,SHAPES,PALETTES,ACCENTS,NAMES} from './config.js';
+import {state,EYES,MOUTHS,EXTRAS,ACCESSORIES,SHAPES,PALETTES,ACCENTS,NAMES} from './config.js';
 import {applySeed} from './seed.js';
 
 export const $=s=>document.querySelector(s);
@@ -29,7 +29,7 @@ let nameIn,caption,main;
 
 export function initUI(){
 const pct=v=>Math.round(v*100)+'%';
-const sF=$('#sec-forma'),sR=$('#sec-rosto'),sH=$('#sec-halftone'),sC=$('#sec-cor');
+const sF=$('#sec-forma'),sR=$('#sec-rosto'),sA=$('#sec-acessorios'),sH=$('#sec-halftone'),sC=$('#sec-cor');
 slider(sF,'width','Largura',.4,.66,.01,pct);
 slider(sF,'height','Altura',.46,.7,.01,pct);
 slider(sF,'tails','Pontas da barra',2,8,1);
@@ -40,6 +40,7 @@ seg(sR,'mouth','Boca',MOUTHS);
 seg(sR,'extra','Detalhe',EXTRAS);
 slider(sR,'eyeGap','Distância dos olhos',.06,.14,.005,pct);
 slider(sR,'eyeY','Altura do rosto',-.04,.08,.005,v=>(v*100).toFixed(1));
+seg(sA,'accessory','Acessório',ACCESSORIES);
 slider(sH,'cells','Densidade da grade',32,120,1);
 slider(sH,'dot','Tamanho do ponto',.5,1.4,.01,pct);
 slider(sH,'trail','Rastro',0,.96,.01,pct);

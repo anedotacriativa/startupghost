@@ -3,6 +3,7 @@
 export const EYES=[['ponto','Ponto'],['oval','Oval'],['brilho','Brilho'],['feliz','Feliz'],['sono','Sono'],['x','Nocaute']];
 export const MOUTHS=[['nada','Nenhuma'],['o','Oh'],['sorriso','Sorriso'],['onda','Tremida'],['lingua','Língua']];
 export const EXTRAS=[['nada','Nenhum'],['bochechas','Bochechas'],['aureola','Auréola'],['chifres','Chifres'],['antena','Antena']];
+export const ACCESSORIES=[['nada','Nenhum'],['notebook','Notebook'],['fone','Fone de ouvido'],['caneca','Café'],['energetico','Energético']];
 export const SHAPES=[['circulo','Círculo'],['quadrado','Quadrado'],['losango','Losango']];
 export const PALETTES=[{paper:'#E9E9E9',ink:'#141414'},{paper:'#141414',ink:'#EDEDED'},{paper:'#DCE7C6',ink:'#1D2912'},{paper:'#F4EC86',ink:'#1A1A1A'},{paper:'#C8DCF1',ink:'#0F2139'},{paper:'#FFD6E8',ink:'#2A0A18'}];
 export const ACCENTS=['#FF2E8A','#FF3B1F','#2F6BFF','#00A06A','#141414'];
@@ -10,7 +11,7 @@ export const NAMES=['Bu','Névoa','Bruma','Lençol','Fumaça','Pipoca','Sombra',
 
 
 export const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
-export const state={seed:'',width:.54,height:.58,tails:4,wave:.6,arms:true,eyes:'ponto',mouth:'nada',extra:'nada',eyeGap:.1,eyeY:.02,
+export const state={seed:'',width:.54,height:.58,tails:4,wave:.6,arms:true,eyes:'ponto',mouth:'nada',extra:'nada',accessory:'nada',eyeGap:.1,eyeY:.02,
  cells:72,dot:1,shape:'circulo',shading:true,trail:.82,animate:!reduce,palette:0,accent:0};
 
 
